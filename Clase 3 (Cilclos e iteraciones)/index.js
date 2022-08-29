@@ -40,7 +40,7 @@
 //================CONTINUE================
 /*
     Escribir un programa que imprima todos 
-    los números enteros del 1 al 100
+    los números pares del 1 al 100
 */
 
 // for (let index = 1; index <= 10; index++) {
