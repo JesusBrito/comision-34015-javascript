@@ -117,8 +117,8 @@ console.log(existeArgentina)
 // console.log(elementoEncontrado);
 
 //================ SOME ================
-//Encontrar el primer elemento del array que cumplen con una
-//condición, si no existe ningún elemento retorna undefined
+//Nos retorna un valor booleano en función de si existe o no el elemento
+// que estamos buscando en el array
 
 // let arrayPaises = ["Argentina", "Venezuela", "Colombia", "México"];
 
