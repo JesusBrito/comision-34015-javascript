@@ -116,7 +116,7 @@
 
 const nombres = ["Rita", "Pedro", "Miguel", "Ana", "Vanesa"];
 
-function eliminar(nombre) {
+function eliminarElemento(nombre) {
   let index = nombres.indexOf(nombre);
   if (index != -1) {
     nombres.splice(index, 1);
