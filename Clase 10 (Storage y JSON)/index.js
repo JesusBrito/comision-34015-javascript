@@ -67,7 +67,7 @@
 let productos = [];
 let usuario;
 
-// Variables para elementos autenticación y usuario
+// Variables para elementos de autenticación y usuario
 
 let formularioIdentificacion;
 let contenedorIdentificacion;
@@ -75,7 +75,7 @@ let contenedorUsuario;
 let textoUsuario;
 let limpiarStorage;
 
-// Variables de productos
+// Variables para formulario de productos
 let formulario;
 let inputId;
 let inputNombre;
