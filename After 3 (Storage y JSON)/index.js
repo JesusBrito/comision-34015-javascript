@@ -1,66 +1,3 @@
-//================ SESSION STORAGE  ================
-//Se utiliza para almacenar información en el navegador,
-// esta información se elimina si se cierra el navegador
-// o se cierra la pestaña
-
-// let variableAlmacenar = "TOKEN_SEGURO";
-
-// sessionStorage.setItem("token", variableAlmacenar);
-// let textoAlmacenado = localStorage.getItem("token");
-//console.log(textoAlmacenado)
-
-//================ LOCAL STORAGE  ================
-// let variableAlmacenar = "TOKEN_SEGURO";
-
-// localStorage.setItem("token_ls", variableAlmacenar);
-// let textoAlmacenado = localStorage.getItem("token_ls");
-// console.log(textoAlmacenado)
-
-//================ RECORRER LOCAL STORAGE O SESSION STORAGE ================
-// let tokenAlmacenar = "TOKEN_SEGURO";
-// let usuarioAlmacenar = "Jesus_B";
-
-// localStorage.setItem("token_ls", tokenAlmacenar);
-// localStorage.setItem("usuario_ls", usuarioAlmacenar);
-
-// for (let i = 0; i < localStorage.length; i++) {
-//   let clave = localStorage.key(i);
-//   console.log("Clave: " + clave);
-//   console.log("Valor: " + localStorage.getItem(clave));
-// }
-
-//================ ELIMINAR ELEMENTOS DEL LOCAL STORAGE O SESSION STORAGE ================
-
-// localStorage.removeItem("token_ls");
-// localStorage.clear();
-
-//================ AGREGAR OBJETO AL LOCAL STORAGE O SESSION STORAGE ================
-// const listaProductos = [
-//   {
-//     id: 1,
-//     nombre: "Laptop",
-//     precioCompra: "800",
-//     precioVenta: "1100",
-//     cantidad: 2,
-//   },
-//   {
-//     id: 2,
-//     nombre: "PC",
-//     precioCompra: "900",
-//     precioVenta: "1500",
-//     cantidad: 3,
-//   },
-// ];
-
-// let listaProductosJSON = JSON.stringify(listaProductos);
-// localStorage.setItem("arrayProductos", listaProductosJSON);
-
-// let productosAlmacenados = localStorage.getItem("arrayProductos");
-// console.log(typeof productosAlmacenados, productosAlmacenados);
-
-// let productosArray = JSON.parse(productosAlmacenados);
-// console.log(typeof productosArray, productosArray);
-
 //================ EJEMPLO COMPLETO  ================
 
 // Variables de información
@@ -73,9 +10,11 @@ let formularioIdentificacion;
 let contenedorIdentificacion;
 let contenedorUsuario;
 let textoUsuario;
-let limpiarStorage;
+let botonLimpiarStorage;
 
 // Variables para formulario de productos
+let modalAddProduct;
+let botonAgregarProducto;
 let formulario;
 let inputId;
 let inputNombre;
@@ -83,6 +22,7 @@ let inputPrecioCompra;
 let inputPrecioVenta;
 let inputCantidad;
 let contenedorProductos;
+let botonesCerrarModalAgregarProducto;
 
 class Producto {
   constructor(id, nombre, precioCompra, precioVenta, cantidad) {
@@ -105,22 +45,45 @@ function inicializarElementos() {
   contenedorUsuario = document.getElementById("contenedorUsuario");
   textoUsuario = document.getElementById("textoUsuario");
 
-  
-  limpiarStorage = document.getElementById("limpiarStorage");
-
-  formulario = document.getElementById("formulario");
+  botonLimpiarStorage = document.getElementById("limpiarStorage");
+  formulario = document.getElementById("formularioAgregarProducto");
   inputId = document.getElementById("inputId");
   inputNombre = document.getElementById("inputNombreProducto");
   inputPrecioCompra = document.getElementById("inputPrecioCompra");
   inputPrecioVenta = document.getElementById("inputPrecioVenta");
   inputCantidad = document.getElementById("inputCantidad");
   contenedorProductos = document.getElementById("contenedorProductos");
+
+  botonesCerrarModalAgregarProducto = document.getElementsByClassName(
+    "btnCerrarModalAgregarProducto"
+  );
+  modalAddProduct = document.getElementById("modalAddProduct");
+  botonAgregarProducto = document.getElementById("btnAgregarProducto");
+  modal = new bootstrap.Modal(modalAddProduct);
 }
 
 function inicializarEventos() {
   formulario.onsubmit = (event) => validarFormulario(event);
   formularioIdentificacion.onsubmit = (event) => identificarUsuario(event);
-  limpiarStorage.onclick = eliminarStorage;
+  botonLimpiarStorage.onclick = eliminarStorage;
+  botonAgregarProducto.onclick = abrirModalAgregarProducto;
+
+  for (const boton of botonesCerrarModalAgregarProducto) {
+    boton.onclick = cerrarModalAgregarProducto;
+  }
+}
+
+function abrirModalAgregarProducto() {
+  if (usuario) {
+    modal.show();
+  } else {
+    alert("Identifíquese antes de agregar un producto");
+  }
+}
+
+function cerrarModalAgregarProducto() {
+  formulario.reset();
+  modal.hide();
 }
 
 function eliminarStorage() {
@@ -153,32 +116,29 @@ function mostrarFormularioIdentificacion() {
 
 function validarFormulario(event) {
   event.preventDefault();
-  if (usuario) {
-    let idProducto = inputId.value;
-    let nombre = inputNombre.value;
-    let precioCompra = parseFloat(inputPrecioCompra.value);
-    let precioVenta = parseFloat(inputPrecioVenta.value);
-    let cantidad = parseInt(inputCantidad.value);
+  let idProducto = inputId.value;
+  let nombre = inputNombre.value;
+  let precioCompra = parseFloat(inputPrecioCompra.value);
+  let precioVenta = parseFloat(inputPrecioVenta.value);
+  let cantidad = parseInt(inputCantidad.value);
 
-    const idExiste = productos.some((producto) => producto.id === idProducto);
-    if (!idExiste) {
-      let producto = new Producto(
-        idProducto,
-        nombre,
-        precioCompra,
-        precioVenta,
-        cantidad
-      );
+  const idExiste = productos.some((producto) => producto.id === idProducto);
+  if (!idExiste) {
+    let producto = new Producto(
+      idProducto,
+      nombre,
+      precioCompra,
+      precioVenta,
+      cantidad
+    );
 
-      productos.push(producto);
-      formulario.reset();
-      actualizarProductosStorage();
-      pintarProductos();
-    } else {
-      alert("El id ya existe");
-    }
+    productos.push(producto);
+    formulario.reset();
+    alert("Producto agregado exitosamente");
+    actualizarProductosStorage();
+    pintarProductos();
   } else {
-    alert("Identifíquese antes de agregar un producto");
+    alert("El id ya existe");
   }
 }
 
@@ -219,7 +179,7 @@ function pintarProductos() {
                 </p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-danger" id="botonEliminar-${producto.id}" >Eliminar</button>
+                  <button class="btn btn-danger" id="botonEliminar-${producto.id}" >Eliminar</button>
                 </div>
             </div>`;
 
