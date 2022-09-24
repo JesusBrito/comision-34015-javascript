@@ -23,6 +23,7 @@ let inputPrecioVenta;
 let inputCantidad;
 let contenedorProductos;
 let botonesCerrarModalAgregarProducto;
+let modal
 
 class Producto {
   constructor(id, nombre, precioCompra, precioVenta, cantidad) {
