@@ -23,7 +23,7 @@ let inputPrecioVenta;
 let inputCantidad;
 let contenedorProductos;
 let botonesCerrarModalAgregarProducto;
-let modal
+let modal;
 
 class Producto {
   constructor(id, nombre, precioCompra, precioVenta, cantidad) {
@@ -135,12 +135,29 @@ function validarFormulario(event) {
 
     productos.push(producto);
     formulario.reset();
-    alert("Producto agregado exitosamente");
     actualizarProductosStorage();
     pintarProductos();
+    mostrarMensajeConfirmacion(
+      `El producto ${nombre} fue agregado exitosamente`,
+      "info"
+    );
   } else {
     alert("El id ya existe");
   }
+}
+
+function confirmarEliminacion(idProducto) {
+  Swal.fire({
+    icon: "question",
+    title: "¿Estas seguro que quieres eliminar el producto?",
+    showCancelButton: true,
+    confirmButtonText: "Eliminar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      eliminarProducto(idProducto);
+    }
+  });
 }
 
 function eliminarProducto(idProducto) {
@@ -149,9 +166,14 @@ function eliminarProducto(idProducto) {
     (producto) => Number(producto.id) === Number(idProducto)
   );
 
+  let nombreProductoEliminado = productos[indiceBorrar].nombre;
   productos.splice(indiceBorrar, 1);
   columnaBorrar.remove();
   actualizarProductosStorage();
+  mostrarMensajeConfirmacion(
+    `El producto ${nombreProductoEliminado} fue eliminado exitosamente`,
+    "danger"
+  );
 }
 
 function pintarProductos() {
@@ -187,7 +209,7 @@ function pintarProductos() {
     contenedorProductos.append(column);
 
     let botonEliminar = document.getElementById(`botonEliminar-${producto.id}`);
-    botonEliminar.onclick = () => eliminarProducto(producto.id);
+    botonEliminar.onclick = () => confirmarEliminacion(producto.id);
   });
 }
 
@@ -214,6 +236,17 @@ function obtenerUsuarioStorage() {
     usuario = usuarioAlmacenado;
     mostrarTextoUsuario();
   }
+}
+
+function mostrarMensajeConfirmacion(mensaje, clase) {
+  Toastify({
+    text: mensaje,
+    duration: 30000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    className: clase
+  }).showToast();
 }
 
 function main() {
