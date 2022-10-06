@@ -245,14 +245,41 @@ function mostrarMensajeConfirmacion(mensaje, clase) {
     close: true,
     gravity: "top",
     position: "right",
-    className: clase
+    className: clase,
   }).showToast();
+}
+
+async function consultarProductosServer() {
+  // fetch("https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos")
+  //   .then((response) => response.json())
+  //   .then((data) => console.log(data))
+  //   .catch((error) => console.log(error));
+
+  // fetch("./productos.json")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     productos = [...data]
+  //     pintarProductos();
+  //   })
+  //   .catch((error) => console.log(error));
+
+  try {
+    const response = await fetch(
+      "https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos"
+    );
+    const data = await response.json();
+    productos = [...data];
+    pintarProductos();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function main() {
   inicializarElementos();
   inicializarEventos();
-  obtenerProductosStorage();
+  consultarProductosServer();
+  //obtenerProductosStorage();
   obtenerUsuarioStorage();
 }
 
