@@ -1,0 +1,170 @@
+[
+  {
+    "nombre": "Licensed Frozen Salad",
+    "cantidad": 49,
+    "precioVenta": "537.00",
+    "precioCompra": "784.00",
+    "fecha": "2022-04-04T06:08:01.498Z",
+    "id": "7"
+  },
+  {
+    "nombre": "Licensed Fresh Bike",
+    "cantidad": 91,
+    "precioVenta": "989.00",
+    "precioCompra": "816.00",
+    "fecha": "2022-10-05T09:06:59.703Z",
+    "id": "8"
+  },
+  {
+    "nombre": "Sleek Rubber Pants",
+    "cantidad": 19,
+    "precioVenta": "384.00",
+    "precioCompra": "929.00",
+    "fecha": "2022-10-05T16:43:45.364Z",
+    "id": "9"
+  },
+  {
+    "nombre": "Recycled Fresh Shoes",
+    "cantidad": 95,
+    "precioVenta": "417.00",
+    "precioCompra": "450.00",
+    "fecha": "2022-10-05T11:01:19.684Z",
+    "id": "10"
+  },
+  {
+    "nombre": "Fantastic Frozen Cheese",
+    "cantidad": 12,
+    "precioVenta": "41.00",
+    "precioCompra": "692.00",
+    "fecha": "2022-10-05T05:41:58.508Z",
+    "id": "11"
+  },
+  {
+    "nombre": "Handmade Granite Ball",
+    "cantidad": 73,
+    "precioVenta": "511.00",
+    "precioCompra": "626.00",
+    "fecha": "2022-10-05T10:52:52.282Z",
+    "id": "12"
+  },
+  {
+    "nombre": "Gorgeous Fresh Shoes",
+    "cantidad": 13,
+    "precioVenta": "723.00",
+    "precioCompra": "756.00",
+    "fecha": "2022-10-05T15:11:39.565Z",
+    "id": "13"
+  },
+  {
+    "nombre": "Bespoke Soft Cheese",
+    "cantidad": 59,
+    "precioVenta": "662.00",
+    "precioCompra": "378.00",
+    "fecha": "2022-10-05T22:19:36.777Z",
+    "id": "14"
+  },
+  {
+    "nombre": "Tasty Frozen Ball",
+    "cantidad": 88,
+    "precioVenta": "261.00",
+    "precioCompra": "31.00",
+    "fecha": "2022-10-05T23:20:32.106Z",
+    "id": "15"
+  },
+  {
+    "nombre": "Electronic Concrete Computer",
+    "cantidad": 96,
+    "precioVenta": "562.00",
+    "precioCompra": "557.00",
+    "fecha": "2022-10-05T23:40:25.696Z",
+    "id": "16"
+  },
+  {
+    "nombre": "Handcrafted Rubber Fish",
+    "cantidad": 19,
+    "precioVenta": "684.00",
+    "precioCompra": "34.00",
+    "fecha": "2022-10-05T06:59:45.213Z",
+    "id": "17"
+  },
+  {
+    "nombre": "Recycled Frozen Hat",
+    "cantidad": 55,
+    "precioVenta": "3.00",
+    "precioCompra": "349.00",
+    "fecha": "2022-10-05T15:22:08.468Z",
+    "id": "18"
+  },
+  {
+    "nombre": "Fantastic Fresh Sausages",
+    "cantidad": 18,
+    "precioVenta": "336.00",
+    "precioCompra": "637.00",
+    "fecha": "2022-10-05T11:52:15.595Z",
+    "id": "19"
+  },
+  {
+    "nombre": "Refined Wooden Bike",
+    "cantidad": 16,
+    "precioVenta": "32.00",
+    "precioCompra": "439.00",
+    "fecha": "2022-10-05T06:00:37.481Z",
+    "id": "20"
+  },
+  {
+    "nombre": "Electronic Bronze Fish",
+    "cantidad": 57,
+    "precioVenta": "556.00",
+    "precioCompra": "883.00",
+    "fecha": "2022-10-05T18:15:54.069Z",
+    "id": "21"
+  },
+  {
+    "nombre": "Handcrafted Concrete Fish",
+    "cantidad": 74,
+    "precioVenta": "571.00",
+    "precioCompra": "530.00",
+    "fecha": "2022-10-05T20:29:51.583Z",
+    "id": "22"
+  },
+  {
+    "nombre": "Ergonomic Metal Salad",
+    "cantidad": 73,
+    "precioVenta": "590.00",
+    "precioCompra": "707.00",
+    "fecha": "2022-10-05T08:38:09.457Z",
+    "id": "23"
+  },
+  {
+    "nombre": "Fantastic Frozen Chicken",
+    "cantidad": 77,
+    "precioVenta": "668.00",
+    "precioCompra": "205.00",
+    "fecha": "2022-10-05T14:20:06.698Z",
+    "id": "24"
+  },
+  {
+    "nombre": "Luxurious Soft Pizza",
+    "cantidad": 27,
+    "precioVenta": "919.00",
+    "precioCompra": "356.00",
+    "fecha": "2022-10-05T04:34:09.423Z",
+    "id": "25"
+  },
+  {
+    "nombre": "Ergonomic Granite Bacon",
+    "cantidad": 24,
+    "precioVenta": "947.00",
+    "precioCompra": "530.00",
+    "fecha": "2022-10-05T22:23:51.762Z",
+    "id": "26"
+  },
+  {
+    "nombre": "Luxurious Concrete Tuna",
+    "cantidad": 81,
+    "precioVenta": "888.00",
+    "precioCompra": "249.00",
+    "fecha": "2022-10-05T06:24:17.250Z",
+    "id": "27"
+  }
+]
