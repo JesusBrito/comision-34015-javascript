@@ -132,15 +132,8 @@ function validarFormulario(event) {
       precioVenta,
       cantidad
     );
-
-    productos.push(producto);
-    formulario.reset();
-    actualizarProductosStorage();
-    pintarProductos();
-    mostrarMensajeConfirmacion(
-      `El producto ${nombre} fue agregado exitosamente`,
-      "info"
-    );
+    //actualizarProductosStorage();
+    registrarProductoServer(producto);
   } else {
     alert("El id ya existe");
   }
@@ -161,19 +154,7 @@ function confirmarEliminacion(idProducto) {
 }
 
 function eliminarProducto(idProducto) {
-  let columnaBorrar = document.getElementById(`columna-${idProducto}`);
-  let indiceBorrar = productos.findIndex(
-    (producto) => Number(producto.id) === Number(idProducto)
-  );
-
-  let nombreProductoEliminado = productos[indiceBorrar].nombre;
-  productos.splice(indiceBorrar, 1);
-  columnaBorrar.remove();
-  actualizarProductosStorage();
-  mostrarMensajeConfirmacion(
-    `El producto ${nombreProductoEliminado} fue eliminado exitosamente`,
-    "danger"
-  );
+  eliminarProductoServer(idProducto);
 }
 
 function pintarProductos() {
@@ -257,6 +238,57 @@ async function consultarProductosServer() {
     const data = await response.json();
     productos = [...data];
     pintarProductos();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function registrarProductoServer(producto) {
+  try {
+    const response = await fetch(
+      "https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos",
+      {
+        method: "POST",
+        body: JSON.stringify(producto),
+      }
+    );
+    console.log(response);
+
+    productos.push(producto);
+    formulario.reset();
+    pintarProductos();
+    mostrarMensajeConfirmacion(
+      `El producto ${nombre} fue agregado exitosamente`,
+      "info"
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function eliminarProductoServer(productoId) {
+  try {
+    const response = await fetch(
+      `https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos/${productoId}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    console.log(response);
+
+    let columnaBorrar = document.getElementById(`columna-${productoId}`);
+    let indiceBorrar = productos.findIndex(
+      (producto) => Number(producto.id) === Number(productoId)
+    );
+
+    let nombreProductoEliminado = productos[indiceBorrar].nombre;
+    productos.splice(indiceBorrar, 1);
+    columnaBorrar.remove();
+    mostrarMensajeConfirmacion(
+      `El producto ${nombreProductoEliminado} fue eliminado exitosamente`,
+      "danger"
+    );
   } catch (error) {
     console.log(error);
   }
