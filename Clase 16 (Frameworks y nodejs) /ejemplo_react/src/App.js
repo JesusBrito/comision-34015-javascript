@@ -8,11 +8,9 @@ function App() {
 
   async function getDataFromApi() {
     try {
-      const response = await fetch(
-        "http://localhost:3001/api/products"
-      );
+      const response = await fetch("http://localhost:3001/api/products");
       const dataResponse = await response.json();
-      setProducts(dataResponse);
+      setProducts(dataResponse.products);
     } catch (error) {
       console.log(error);
     }
@@ -29,11 +27,11 @@ function App() {
       </thead>
       <tbody>
         {products.map((product) => (
-          <tr key={product.id}>
-            <td>{product.nombre}</td>
-            <td>{product.precioCompra}</td>
-            <td>{product.precioVenta}</td>
-            <td>{product.cantidad}</td>
+          <tr key={product._id}>
+            <td>{product.name}</td>
+            <td>{product.purchasePrice}</td>
+            <td>{product.salePrice}</td>
+            <td>{product.quantity}</td>
           </tr>
         ))}
       </tbody>
